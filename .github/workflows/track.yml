@@ -2,7 +2,7 @@ name: Track and Update
 
 on:
   schedule: 
-    - cron: '*/5 * * * *'
+    - cron: '*/3 * * * *'
 
 defaults:
   run:
@@ -31,3 +31,4 @@ jobs:
               tag_name=$(curl -s "https://api.github.com/repos/uazo/cromite/releases/latest" | jq .tag_name);\
               git commit -m $tag_name
               git push
+        continue-on-error: true

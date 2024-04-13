@@ -25,10 +25,10 @@ jobs:
       
       - name: Push
         run: |
-              git config --global user.name 'Actions'
+              git config --global user.name 'Github Actions'
               git config --global user.email 'github-actions@github.com'
               git add .
-              tag_name=$(curl -s "https://api.github.com/repos/uazo/cromite/releases/latest" | jq .tag_name);\
-              git commit -m $tag_name
+              tag_name=$(curl -s "https://api.github.com/repos/uazo/cromite/releases/latest" | jq .tag_name | sed -E 's/.*"([^"]+)".*/\1/');\
+              git commit -m "Update $tag_name"
               git push
         continue-on-error: true

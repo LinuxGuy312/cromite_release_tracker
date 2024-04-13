@@ -1,0 +1,33 @@
+name: Track and Update
+
+on:
+  schedule: 
+    - cron: '*/5 * * * *'
+
+defaults:
+  run:
+    shell: bash
+
+env:
+  BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+
+jobs:
+  track_and_update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkouts
+        uses: actions/checkout@v4
+
+      - name: Update
+        run: python3 update.py
+      
+      - name: Push
+        run: |
+              git config --global user.name 'Actions'
+              git config --global user.email 'github-actions@github.com'
+              git add .
+              tag_name=$(curl -s "https://api.github.com/repos/uazo/cromite/releases/latest" | jq .tag_name);\
+              git commit -m $tag_name
+              git push

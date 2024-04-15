@@ -2,7 +2,7 @@ name: Track and Update
 
 on:
   schedule: 
-    - cron: '*/5 * * * *'
+    - cron: '0 * * * *'
 
 defaults:
   run:

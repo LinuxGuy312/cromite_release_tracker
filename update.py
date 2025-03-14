@@ -79,6 +79,9 @@ def release():
 [chrome-win.zip]({dl}/chrome-win.zip)
 
 [chrome-lin64.tar.gz]({dl}/chrome-lin64.tar.gz)
+`{'_'*20}`
+
+[DONATE](https://github.com/uazo/cromite?tab=readme-ov-file#donate)
 `{'_'*20}`"""
 
     return text
